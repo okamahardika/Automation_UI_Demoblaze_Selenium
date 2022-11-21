@@ -1,0 +1,7 @@
+app/binar/tests/Runner.class
+app/binar/pages/ContactPage.class
+app/binar/pages/LoginPage.class
+app/binar/pages/SignUpPage.class
+app/binar/pages/CartPage.class
+app/binar/pages/HomePage.class
+app/binar/pages/CategoriesPage.class
