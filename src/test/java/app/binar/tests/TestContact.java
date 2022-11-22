@@ -1,7 +1,9 @@
 package app.binar.tests;
 
+import app.binar.handler.Action;
+import app.binar.handler.TestDataProvider;
+import app.binar.pages.ContactPage;
 import app.binar.pages.HomePage;
-import app.binar.pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,8 +15,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class TestLogin {
-
+public class TestContact {
     WebDriver webDriver;
 
     @BeforeMethod(alwaysRun = true)
@@ -32,22 +33,26 @@ public class TestLogin {
     public void closeDriver() {
         if (webDriver!=null) {
             webDriver.close();
+            System.out.println("Chrome Driver Closed");
         }
     }
 
-    @Test(groups = {"positive", "login"},
-            description = "user should be able to login using valid credential")
-    public void userShouldBeAbleToLoginUsingValidCredential() {
-        // navigate to login page
+    @Test(description = "user should be able to send message on contact page")
+    public void userShouldBeAbleToSendMessageOnContactPage() {
         HomePage homePage = new HomePage(webDriver);
-        homePage.tapNavLinkLogin();
+        homePage.tapNavLinkContact();
 
-        // user login
-        LoginPage loginPage = new LoginPage(webDriver);
-        loginPage.userLogin("regiewby", "password");
+        String email = TestDataProvider.getRandomEmail();
+        String name = TestDataProvider.getRandomUserName();
+        String message = "Halo komplain nih.......";
+        System.out.println(email);
 
-        // assert login page
-        Assert.assertTrue(homePage.getNameOfUser().contains("regiewby"));
+        ContactPage contactPage = new ContactPage(webDriver);
+        contactPage.sendMessageContact(email, name, message);
+
+        //assertion for pop up without element
+        Assert.assertEquals(new Action(webDriver).getAlertMessage(),"Thanks for the message!!");
+        new Action(webDriver).alertHandler(true);
 
     }
 }

@@ -3,8 +3,8 @@
 <suite name="All Test Suite">
     <test verbose="2" name="login and signup tests" thread-count="2" parallel="false">
        <classes>
-           <class name="app.binar.tests.TestLogin"/>
-           <class name="app.binar.tests.TestSignUp"/>
+           <class name="app.binar.tests.TestContact"/>
+        <!--   <class name="app.binar.tests.TestSignUp"/>-->
        </classes>
     </test>
 </suite>

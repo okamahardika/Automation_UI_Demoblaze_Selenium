@@ -8,10 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
 
-/**
- * @author regiewby on 16/11/22
- * @project web-automation-learning
- */
+
 public class HomePage {
 
     protected WebDriver webDriver;
@@ -24,14 +21,45 @@ public class HomePage {
         PageFactory.initElements(webDriver, this);
     }
 
-    @FindBy(id = "login2")
+    @FindBy (xpath = "//a[.='Home (current)']")
+    private WebElement navLinkHome;
+
+    @FindBy (xpath = "//a[.='Contact']")
+    private WebElement navLinkContact;
+
+    @FindBy (xpath = "//a[.='About us']")
+    private WebElement navLinkAboutUs;
+
+    @FindBy (xpath = "//a[.='Cart']")
+    private WebElement navLinkCart;
+
+    @FindBy (xpath = "//a[.='Log in']")
     private WebElement navLinkLogin;
 
-    @FindBy(id = "signin2")
+    @FindBy (xpath = "//a[.='Sign up']")
     private WebElement navLinkSignUp;
 
-    @FindBy(id = "nameofuser")
+    @FindBy (xpath = "//a[.='Log out']")
+    private  WebElement navLinkLogOut;
+
+    @FindBy (xpath = "//a[@id='nameofuser']")
     private WebElement navLinkNameOfUser;
+
+    public void tapNavLinkHome(){
+        navLinkHome.click();
+    }
+
+    public void tapNavLinkContact(){
+        navLinkContact.click();
+    }
+
+    public void tapNavLinkAboutUs(){
+        navLinkAboutUs.click();
+    }
+
+    public void tapNavLinkCart(){
+        navLinkCart.click();
+    }
 
 
     public void tapNavLinkLogin() {

@@ -2,10 +2,7 @@ package app.binar.handler;
 
 import com.github.javafaker.Faker;
 
-/**
- * @author regiewby on 20/11/22
- * @project web-automation-learning
- */
+
 public class TestDataProvider {
 
     private static final Faker faker = new Faker();
@@ -20,5 +17,9 @@ public class TestDataProvider {
 
     public static String getRandomStringMatchingPattern(String pattern) {
         return faker.regexify(pattern);
+    }
+
+    public static String getRandomEmail() {
+        return getRandomStringMatchingPattern("[a-z]{5}\\d{3}") + ".binar@academy.com";
     }
 }

@@ -8,10 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
 
-/**
- * @author regiewby on 16/11/22
- * @project web-automation-learning
- */
 public class LoginPage {
 
     protected WebDriver webDriver;

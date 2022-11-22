@@ -8,10 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-/**
- * @author regiewby on 20/11/22
- * @project web-automation-learning
- */
+
 public class Action {
 
     WebDriver webDriver;
@@ -48,5 +45,15 @@ public class Action {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public String getAlertMessage() {
+        String message ="";
+        try {
+            Thread.sleep(3000);
+            message =  webDriver.switchTo().alert().getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return message;
     }
 }

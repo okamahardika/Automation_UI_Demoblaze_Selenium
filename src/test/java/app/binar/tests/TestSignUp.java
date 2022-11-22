@@ -16,10 +16,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-/**
- * @author regiewby on 20/11/22
- * @project web-automation-learning
- */
+
 public class TestSignUp {
 
     WebDriver webDriver;
