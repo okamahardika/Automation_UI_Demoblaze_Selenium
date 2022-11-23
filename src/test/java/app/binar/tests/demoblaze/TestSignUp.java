@@ -1,7 +1,10 @@
-package app.binar.tests;
+package app.binar.tests.demoblaze;
 
-import app.binar.pages.HomePage;
-import app.binar.pages.LoginPage;
+import app.binar.handler.Action;
+import app.binar.handler.TestDataProvider;
+import app.binar.pages.demoblaze.HomePage;
+import app.binar.pages.demoblaze.LoginPage;
+import app.binar.pages.demoblaze.SignUpPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +16,8 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class TestLogin {
+
+public class TestSignUp {
 
     WebDriver webDriver;
 
@@ -35,19 +39,32 @@ public class TestLogin {
         }
     }
 
-    @Test(groups = {"positive", "login"},
-            description = "user should be able to login using valid credential")
-    public void userShouldBeAbleToLoginUsingValidCredential() {
-        // navigate to login page
+    @Test(groups = {"positive", "signup"},
+            description = "user should be able to signup using new credential")
+    public void userShouldEnableToSignUpUsingNewCredential() {
+        // navigate to signup page
         HomePage homePage = new HomePage(webDriver);
+        homePage.tapNavLinkSignUp();
+
+        // get new credential
+        String userName = TestDataProvider.getRandomUserName();
+        String password = TestDataProvider.getRandomPasswordNumber();
+
+        // register new user
+        SignUpPage signUpPage = new SignUpPage(webDriver);
+        signUpPage.registerNewUser(userName, password);
+
+        // handle alert
+        new Action(webDriver).alertHandler(true);
+
+        // navigate to login page
         homePage.tapNavLinkLogin();
 
-        // user login
+        // new user login
         LoginPage loginPage = new LoginPage(webDriver);
-        loginPage.userLogin("regiewby", "password");
+        loginPage.userLogin(userName, password);
 
         // assert login page
-        Assert.assertTrue(homePage.getNameOfUser().contains("regiewby"));
-
+        Assert.assertTrue(homePage.getNameOfUser().contains(userName));
     }
 }

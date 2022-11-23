@@ -1,9 +1,9 @@
-package app.binar.tests;
+package app.binar.tests.demoblaze;
 
 import app.binar.handler.Action;
 import app.binar.handler.TestDataProvider;
-import app.binar.pages.ContactPage;
-import app.binar.pages.HomePage;
+import app.binar.pages.demoblaze.ContactPage;
+import app.binar.pages.demoblaze.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;

@@ -1,4 +1,4 @@
-package app.binar.pages;
+package app.binar.pages.demoblaze;
 
 import app.binar.handler.Action;
 import org.openqa.selenium.WebDriver;
@@ -8,37 +8,31 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
 
-public class LoginPage {
+public class SignUpPage {
 
     protected WebDriver webDriver;
     protected Action action;
 
-    public LoginPage(WebDriver driver) {
+    public SignUpPage(WebDriver driver) {
         this.webDriver = driver;
         this.action = new Action(this.webDriver);
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         PageFactory.initElements(webDriver, this);
     }
 
-    @FindBy(id = "loginusername")
+    @FindBy(id = "sign-username")
     private WebElement userNameField;
 
-    @FindBy(id = "loginpassword")
+    @FindBy(id = "sign-password")
     private WebElement passwordField;
 
-    @FindBy(xpath = "//button[text()='Log in']")
-    private WebElement btnLogin;
+    @FindBy(xpath = "//button[text()='Sign up']")
+    private WebElement btnSignUp;
 
-    @FindBy(xpath = "//*[@id='logInModal']/div/div/div[3]/button[1]")
-    private WebElement btnClose;
-
-    @FindBy(xpath = "//*[@id='logInModal']/div/div/div[1]/button")
-    private WebElement btnX;
-
-    public void userLogin(String userName, String password) {
+    public void registerNewUser(String userName, String password) {
         enterUserName(userName);
         enterPassword(password);
-        tapLogin();
+        tapButtonSignUp();
     }
 
     public void enterUserName(String userName) {
@@ -51,18 +45,8 @@ public class LoginPage {
         passwordField.sendKeys(password);
     }
 
-    public void tapLogin() {
-        action.waitElementToBeDisplayed(btnLogin, 3);
-        btnLogin.click();
-    }
-
-    public void tapClose() {
-        action.waitElementToBeDisplayed(btnClose, 3);
-        btnClose.click();
-    }
-
-    public void tapCloseX() {
-        action.waitElementToBeDisplayed(btnX, 3);
-        btnX.click();
+    public void tapButtonSignUp() {
+        action.waitElementToBeDisplayed(passwordField, 3);
+        btnSignUp.click();
     }
 }

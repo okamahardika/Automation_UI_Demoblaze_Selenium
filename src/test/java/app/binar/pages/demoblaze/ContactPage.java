@@ -1,4 +1,4 @@
-package app.binar.pages;
+package app.binar.pages.demoblaze;
 
 import app.binar.handler.Action;
 import org.openqa.selenium.WebDriver;

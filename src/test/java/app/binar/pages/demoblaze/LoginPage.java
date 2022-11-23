@@ -1,4 +1,4 @@
-package app.binar.pages;
+package app.binar.pages.demoblaze;
 
 import app.binar.handler.Action;
 import org.openqa.selenium.WebDriver;
@@ -8,31 +8,37 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
 
-public class SignUpPage {
+public class LoginPage {
 
     protected WebDriver webDriver;
     protected Action action;
 
-    public SignUpPage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         this.webDriver = driver;
         this.action = new Action(this.webDriver);
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         PageFactory.initElements(webDriver, this);
     }
 
-    @FindBy(id = "sign-username")
+    @FindBy(id = "loginusername")
     private WebElement userNameField;
 
-    @FindBy(id = "sign-password")
+    @FindBy(id = "loginpassword")
     private WebElement passwordField;
 
-    @FindBy(xpath = "//button[text()='Sign up']")
-    private WebElement btnSignUp;
+    @FindBy(xpath = "//button[text()='Log in']")
+    private WebElement btnLogin;
 
-    public void registerNewUser(String userName, String password) {
+    @FindBy(xpath = "//*[@id='logInModal']/div/div/div[3]/button[1]")
+    private WebElement btnClose;
+
+    @FindBy(xpath = "//*[@id='logInModal']/div/div/div[1]/button")
+    private WebElement btnX;
+
+    public void userLogin(String userName, String password) {
         enterUserName(userName);
         enterPassword(password);
-        tapButtonSignUp();
+        tapLogin();
     }
 
     public void enterUserName(String userName) {
@@ -45,8 +51,18 @@ public class SignUpPage {
         passwordField.sendKeys(password);
     }
 
-    public void tapButtonSignUp() {
-        action.waitElementToBeDisplayed(passwordField, 3);
-        btnSignUp.click();
+    public void tapLogin() {
+        action.waitElementToBeDisplayed(btnLogin, 3);
+        btnLogin.click();
+    }
+
+    public void tapClose() {
+        action.waitElementToBeDisplayed(btnClose, 3);
+        btnClose.click();
+    }
+
+    public void tapCloseX() {
+        action.waitElementToBeDisplayed(btnX, 3);
+        btnX.click();
     }
 }
