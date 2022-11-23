@@ -4,7 +4,6 @@ import app.binar.handler.Action;
 import app.binar.handler.TestDataProvider;
 import app.binar.pages.ContactPage;
 import app.binar.pages.HomePage;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,7 +19,6 @@ public class TestContact {
 
     @BeforeMethod(alwaysRun = true)
     public void launchChrome() {
-        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
         webDriver = new ChromeDriver(options);
